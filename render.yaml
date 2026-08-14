@@ -50,6 +50,6 @@ services:
         value: c2VjdXJldmF1bHQtc3VwZXItc2VjcmV0LWtleS1jaGFuZ2UtbWUtaW4tcHJvZC0yMDI1IQ==
       - key: VAULT_MASTER_KEY
         value: 0123456789abcdef0123456789abcdef
-      # Allowed browser origins — the live Vercel frontend (clean + legacy alias).
+      # Allowed browser origins — the live Vercel frontend (production + legacy alias).
       - key: CORS_ORIGINS
-        value: https://securevault.vercel.app,https://frontend-alpha-navy-48.vercel.app
+        value: https://securevault-singh28priyankas-projects.vercel.app,https://frontend-alpha-navy-48.vercel.app

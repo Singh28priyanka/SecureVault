@@ -11,7 +11,7 @@ encrypted vaults — with MFA, threat detection, audit logging and password-heal
 
 ### 🔗 Live Demo
 
-**▶️ App:** https://securevault.vercel.app &nbsp;·&nbsp; **API:** https://securevault-backend-29v1.onrender.com/api/health
+**▶️ App:** https://securevault-singh28priyankas-projects.vercel.app &nbsp;·&nbsp; **API:** https://securevault-backend-29v1.onrender.com/api/health
 
 Sign in with the demo account: **`demo@securevault.io`** / **`Demo@12345`**
 _(First load after idle can take ~50s while the free-tier backend wakes up.)_
