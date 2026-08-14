@@ -4,7 +4,7 @@
 #  For PostgreSQL + Redis use:     --spring.profiles.active=postgres
 # ==========================================================================
 server:
-  port: 8080
+  port: ${PORT:8080}      # cloud hosts (Render, Railway…) inject PORT
   servlet:
     context-path: /
 

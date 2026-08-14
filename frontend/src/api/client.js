@@ -5,8 +5,12 @@ import axios from 'axios'
  * http://localhost:8080. A response interceptor transparently refreshes the
  * access token once on a 401, then retries the original request.
  */
+// In dev, Vite proxies '/api' to localhost:8080. In production (e.g. Vercel),
+// set VITE_API_URL to the deployed backend, e.g. https://securevault-api.onrender.com/api
+export const API_BASE = import.meta.env.VITE_API_URL || '/api'
+
 const client = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE,
   headers: { 'Content-Type': 'application/json' },
 })
 
@@ -47,7 +51,7 @@ client.interceptors.response.use(
       try {
         refreshing =
           refreshing ||
-          axios.post('/api/auth/refresh', { refreshToken: tokenStore.refresh })
+          axios.post(`${API_BASE}/auth/refresh`, { refreshToken: tokenStore.refresh })
         const { data } = await refreshing
         refreshing = null
         tokenStore.set(data)
