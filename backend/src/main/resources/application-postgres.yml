@@ -1,0 +1,24 @@
+# ==========================================================================
+#  SecureVault — postgres/prod profile (PostgreSQL + Redis).
+#  Activated by docker-compose or:  --spring.profiles.active=postgres
+# ==========================================================================
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/securevault}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:securevault}
+    password: ${DB_PASSWORD:securevault}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  h2:
+    console:
+      enabled: false

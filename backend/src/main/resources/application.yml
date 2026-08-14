@@ -1,0 +1,58 @@
+# ==========================================================================
+#  SecureVault — default profile (H2 in-memory).
+#  Runs with zero external setup:  mvn spring-boot:run
+#  For PostgreSQL + Redis use:     --spring.profiles.active=postgres
+# ==========================================================================
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: securevault
+  datasource:
+    url: jdbc:h2:mem:securevault;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:2525}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+
+# ---- Application-specific configuration -----------------------------------
+securevault:
+  jwt:
+    # Base64-encoded 256-bit signing key. OVERRIDE in production via env var.
+    secret: ${JWT_SECRET:c2VjdXJldmF1bHQtc3VwZXItc2VjcmV0LWtleS1jaGFuZ2UtbWUtaW4tcHJvZC0yMDI1IQ==}
+    access-token-expiration-ms: 3600000        # 1 hour
+    refresh-token-expiration-ms: 604800000     # 7 days
+  encryption:
+    # 32-byte (256-bit) master key for AES-GCM vault encryption. OVERRIDE in prod.
+    master-key: ${VAULT_MASTER_KEY:0123456789abcdef0123456789abcdef}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  seed:
+    enabled: true      # load demo users + credentials on startup
+
+logging:
+  level:
+    com.securevault: INFO
+    org.springframework.security: WARN

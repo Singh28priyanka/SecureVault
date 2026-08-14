@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar to match the aurora theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2f3357, #242745);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f66;
+  background-clip: padding-box;
+}
+
+@layer components {
+  /* Frosted glass surface used across cards, panels and the sidebar */
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 20px 50px -24px rgba(0, 0, 0, 0.7);
+  }
+
+  .glass-hover {
+    @apply transition-all duration-200 hover:border-white/[0.12] hover:bg-white/[0.05];
+  }
+
+  .brand-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-0
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn text-ink-950 bg-brand-gradient bg-[length:200%_100%] hover:bg-right
+           shadow-glow focus:ring-aurora-violet/40;
+  }
+  .btn-ghost {
+    @apply btn bg-white/[0.04] text-slate-200 border border-white/[0.06]
+           hover:bg-white/[0.08] focus:ring-white/20;
+  }
+  .btn-danger {
+    @apply btn bg-aurora-rose/15 text-aurora-rose border border-aurora-rose/30
+           hover:bg-aurora-rose/25 focus:ring-aurora-rose/40;
+  }
+
+  .input {
+    @apply w-full rounded-xl bg-ink-900/70 border border-white/[0.08] px-3.5 py-2.5 text-sm
+           text-slate-100 placeholder-slate-500 outline-none transition
+           focus:border-aurora-cyan/50 focus:ring-2 focus:ring-aurora-cyan/20;
+  }
+
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-400
+           transition-all duration-200 hover:text-slate-100 hover:bg-white/[0.05];
+  }
+  .nav-link-active {
+    @apply text-white bg-white/[0.07] shadow-[inset_0_0_0_1px_rgba(167,139,250,0.25)];
+  }
+}
