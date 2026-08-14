@@ -59,23 +59,7 @@ public class DataSeeder {
             categoryService.create(demo.getId(), new CategoryRequest("Work", "#a78bfa", "briefcase"));
             categoryService.create(demo.getId(), new CategoryRequest("Finance", "#fbbf24", "bank"));
 
-            // Sample credentials (mixed strengths to make analytics interesting)
-            seedCredential(demo, "GitHub", CredentialType.WEBSITE_LOGIN, "demo-dev",
-                    "Gh!7xQ2#pLmZ9v", "https://github.com", null);
-            seedCredential(demo, "Gmail", CredentialType.EMAIL_ACCOUNT, "demo@gmail.com",
-                    "S3cur3-Mail!2025", "https://mail.google.com", null);
-            seedCredential(demo, "Netflix", CredentialType.SOCIAL_MEDIA, "demo@securevault.io",
-                    "password1", "https://netflix.com", null);          // intentionally weak
-            seedCredential(demo, "Chase Bank", CredentialType.BANKING, "demo1990",
-                    "Q8v#Lp2!nR4wZx7t", "https://chase.com",
-                    Instant.now().minus(3, ChronoUnit.DAYS));            // expired
-            seedCredential(demo, "AWS Access Key", CredentialType.API_KEY, "AKIADEMOKEY",
-                    "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY", null, null);
-            seedCredential(demo, "Recovery Codes", CredentialType.SECURE_NOTE, null,
-                    "backup-1: 8842-1190\nbackup-2: 5521-0098", null, null);
-
-            // A couple of illustrative security signals
-            monitoring.recordLogin(demo, true, "127.0.0.1", "Mozilla/5.0 (Macintosh) Chrome/124");
+            // No sample credentials are seeded — the vault starts empty.
 
             log.info("========================================================");
             log.info(" SecureVault demo data ready.");
