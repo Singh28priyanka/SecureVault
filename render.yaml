@@ -50,7 +50,6 @@ services:
         value: c2VjdXJldmF1bHQtc3VwZXItc2VjcmV0LWtleS1jaGFuZ2UtbWUtaW4tcHJvZC0yMDI1IQ==
       - key: VAULT_MASTER_KEY
         value: 0123456789abcdef0123456789abcdef
-      # Set this to your Vercel URL after the frontend deploys, e.g.
-      #   https://secure-vault.vercel.app
+      # Allowed browser origin — the live Vercel frontend.
       - key: CORS_ORIGINS
-        sync: false
+        value: https://frontend-alpha-navy-48.vercel.app
